@@ -45,6 +45,7 @@ const servicesWithIcons = services.map((s, i) => ({
     primaryUrl={hero?.primaryUrl ?? '/contact/'}
     secondaryLabel={hero?.secondaryLabel}
     secondaryUrl={hero?.secondaryUrl}
+    imageUrl="/uploads/hero-bg.jpg"
   />
 
   <Section
@@ -59,7 +60,15 @@ const servicesWithIcons = services.map((s, i) => ({
     title="Quality Workmanship"
     intro="Every floor we finish is a reflection of our commitment to detail. Browse a selection of recent projects across Melbourne."
   >
-    <GalleryBlock variant={home?.data.galleryVariant ?? 'portfolio'} />
+    <GalleryBlock
+      variant={home?.data.galleryVariant ?? 'portfolio'}
+      items={[
+        { title: 'Residential Project', description: 'Herringbone oak, Malvern', imageUrl: '/uploads/gallery-01.jpg' },
+        { title: 'Commercial Fit-out', description: 'Wide-board blackbutt, CBD', imageUrl: '/uploads/gallery-02.jpg' },
+        { title: 'Heritage Restore', description: 'Baltic pine, Carlton North', imageUrl: '/uploads/gallery-03.jpg' },
+        { title: 'Custom Stain', description: 'European oak, Toorak', imageUrl: '/uploads/gallery-04.jpg' }
+      ]}
+    />
     <div class="gallery-cta" style="margin-top: var(--space-6); text-align: center;">
       <a class="button" href="/services/">View all services</a>
     </div>
