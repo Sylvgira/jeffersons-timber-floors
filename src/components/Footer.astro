@@ -57,7 +57,7 @@ const isDark = variant === 'dark';
     <!-- col 1: brand -->
     <div class="footer-col footer-col--brand">
       <a class="footer-logo" href="/" aria-label={`${site.name} home`}>
-        <img src="/uploads/jeffersons-logo.svg" alt={site.name} class="footer-logo__img" />
+        <img src="/uploads/jeffersons-logo.svg" alt={site.name} class="footer-logo__img" loading="lazy" />
       </a>
       <div class="footer-col--brand-text">
         <p>Melbourne's timber flooring specialists.</p>
@@ -345,7 +345,7 @@ const isDark = variant === 'dark';
   /* contact items */
   .footer-contact {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: var(--space-2);
     margin-top: var(--space-2);
     color: var(--color-dark-text-muted);
@@ -354,7 +354,6 @@ const isDark = variant === 'dark';
 
   .footer-contact svg {
     flex-shrink: 0;
-    margin-top: 0.2em;
     color: var(--color-dark-border-medium);
   }
 
