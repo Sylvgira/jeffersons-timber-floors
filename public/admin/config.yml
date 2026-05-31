@@ -146,6 +146,17 @@ collections:
           - { label: Intro, name: intro, widget: text, required: false }
           - { label: Body, name: body, widget: text }
 
+      - name: services
+        label: Services Page
+        file: src/content/pages/services.json
+        format: json
+        fields:
+          - { label: SEO Title, name: seoTitle, widget: string, required: false }
+          - { label: SEO Description, name: seoDescription, widget: text, required: false }
+          - { label: Eyebrow, name: eyebrow, widget: string, required: false }
+          - { label: Title, name: title, widget: string }
+          - { label: Intro, name: intro, widget: text }
+
   - name: services
     label: Services
     folder: src/content/services

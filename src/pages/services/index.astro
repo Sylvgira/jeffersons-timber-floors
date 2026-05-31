@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import PageIntro from '@components/PageIntro.astro';
 import Section from '@components/Section.astro';
@@ -8,13 +8,15 @@ import CTABand from '@components/CTABand.astro';
 import { byOrder } from '../../lib/content';
 
 const services = byOrder(await getCollection('services'));
+const page = await getEntry('pages', 'services');
+const { data } = page;
 ---
 
-<BaseLayout title="Services" description="Engineered timber flooring, professional installation, and subfloor preparation — explore our full range of services across Melbourne.">
+<BaseLayout title={data.seoTitle} description={data.seoDescription}>
   <PageIntro
-    eyebrow="Services"
-    title="Everything your floors need"
-    intro="From engineered timber supply to full installation and subfloor preparation, we handle the full range of timber flooring services."
+    eyebrow={data.eyebrow}
+    title={data.title}
+    intro={data.intro}
   />
 
   <Section>
