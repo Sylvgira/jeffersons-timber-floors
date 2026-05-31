@@ -1,0 +1,26 @@
+{
+  "hero": {
+    "secondaryLabel": "View services",
+    "variant": "simple",
+    "eyebrow": "Small business website starter",
+    "intro": "Replace the content, tune the variables, and keep the structure simple enough for fast delivery.",
+    "primaryUrl": "/contact/",
+    "mediaPosition": "right",
+    "mediaLabel": "Flexible hero",
+    "mediaText": "Use this space for photography, a proof point, or a location/service cue.",
+    "primaryLabel": "Start a project",
+    "mediaTitle": "Choose a hero shape that suits the client",
+    "title": "A clean starting point for Client Business",
+    "secondaryUrl": "/services/",
+    "highlights": [
+      "Consulting",
+      "Implementation",
+      "Support",
+      "Test"
+    ]
+  },
+  "servicesVariant": "grid",
+  "testimonialsVariant": "grid",
+  "galleryVariant": "grid",
+  "ctaVariant": "band"
+}

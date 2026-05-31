@@ -1,0 +1,101 @@
+---
+interface Props {
+  items?: Array<{ title: string; description?: string }>;
+  variant?: 'grid' | 'feature-left' | 'feature-right';
+}
+
+const {
+  variant = 'grid',
+  items = [
+    { title: 'Project image', description: 'Swap this placeholder for client photography.' },
+    { title: 'Detail image', description: 'Use captions when context matters.' },
+    { title: 'Team image', description: 'Keep image treatment simple and consistent.' }
+  ]
+} = Astro.props;
+---
+
+<div class:list={['gallery-block', `gallery-block--${variant}`]}>
+  {items.map((item) => (
+    <figure>
+      <div aria-hidden="true"></div>
+      <figcaption>
+        <strong>{item.title}</strong>
+        {item.description && <span>{item.description}</span>}
+      </figcaption>
+    </figure>
+  ))}
+</div>
+
+<style>
+  .gallery-block {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-5);
+  }
+
+  .gallery-block--feature-left,
+  .gallery-block--feature-right {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  }
+
+  .gallery-block--feature-right {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  }
+
+  .gallery-block--feature-left figure:first-child,
+  .gallery-block--feature-right figure:first-child {
+    grid-row: span 2;
+  }
+
+  .gallery-block--feature-right figure:first-child {
+    order: 2;
+  }
+
+  .gallery-block--feature-left figure:first-child > div,
+  .gallery-block--feature-right figure:first-child > div {
+    aspect-ratio: 4 / 4.9;
+  }
+
+  figure {
+    margin: 0;
+  }
+
+  figure > div {
+    aspect-ratio: 4 / 3;
+    border: 1px solid var(--color-rule);
+    border-radius: var(--radius-md);
+    background:
+      linear-gradient(135deg, transparent 49%, var(--color-rule) 50%, transparent 51%),
+      linear-gradient(45deg, transparent 49%, var(--color-rule) 50%, transparent 51%),
+      var(--color-section);
+  }
+
+  figcaption {
+    display: grid;
+    gap: var(--space-1);
+    margin-top: var(--space-3);
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+  }
+
+  figcaption strong {
+    color: var(--color-text);
+  }
+
+  @media (max-width: 760px) {
+    .gallery-block {
+      grid-template-columns: 1fr;
+    }
+
+    .gallery-block--feature-left figure:first-child,
+    .gallery-block--feature-right figure:first-child {
+      grid-row: auto;
+      order: initial;
+    }
+
+    .gallery-block--feature-left figure:first-child > div,
+    .gallery-block--feature-right figure:first-child > div {
+      aspect-ratio: 4 / 3;
+    }
+  }
+</style>

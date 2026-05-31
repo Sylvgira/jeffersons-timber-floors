@@ -1,0 +1,33 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import PageIntro from '@components/PageIntro.astro';
+import Section from '@components/Section.astro';
+---
+
+<BaseLayout title="Privacy" description="Privacy policy template page.">
+  <PageIntro
+    eyebrow="Privacy"
+    title="Privacy policy"
+    intro="Replace this page with client-specific legal copy before launch."
+  />
+
+  <Section narrow>
+    <div class="prose">
+      <h2>Information collected</h2>
+      <p>
+        This placeholder explains that the website may collect information submitted through forms or ordinary analytics.
+        Confirm the client’s actual tools before publishing.
+      </p>
+
+      <h2>How information is used</h2>
+      <p>
+        This placeholder explains that enquiry information is used to respond to messages and provide requested services.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        Add the client’s legal contact details and any region-specific privacy requirements.
+      </p>
+    </div>
+  </Section>
+</BaseLayout>

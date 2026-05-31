@@ -1,0 +1,80 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Hero from '@components/Hero.astro';
+import Section from '@components/Section.astro';
+import ServiceGrid from '@components/ServiceGrid.astro';
+import Testimonials from '@components/Testimonials.astro';
+import FAQList from '@components/FAQList.astro';
+import LogoStrip from '@components/LogoStrip.astro';
+import GalleryBlock from '@components/GalleryBlock.astro';
+import CTABand from '@components/CTABand.astro';
+import EmbedSection from '@components/EmbedSection.astro';
+import { byOrder } from '../lib/content';
+
+const site = await getEntry('settings', 'site');
+const home = await getEntry('pages', 'home');
+const services = byOrder(await getCollection('services')).slice(0, 3);
+const testimonials = byOrder(await getCollection('testimonials'));
+const faqs = byOrder(await getCollection('faqs'));
+const embeds = byOrder(await getCollection('embeds')).filter((embed) => embed.data.enabled);
+
+const hero = home?.data.hero;
+---
+
+<BaseLayout>
+  <Hero
+    variant={hero?.variant}
+    mediaPosition={hero?.mediaPosition}
+    eyebrow={hero?.eyebrow}
+    title={hero?.title ?? `A clean starting point for ${site?.data.name ?? 'your client'}`}
+    intro={hero?.intro ?? 'Replace the content, tune the variables, and keep the structure simple enough for fast client delivery.'}
+    primaryLabel={hero?.primaryLabel ?? 'Start a project'}
+    primaryUrl={hero?.primaryUrl ?? '/contact/'}
+    secondaryLabel={hero?.secondaryLabel ?? 'View services'}
+    secondaryUrl={hero?.secondaryUrl ?? '/services/'}
+    mediaLabel={hero?.mediaLabel}
+    mediaTitle={hero?.mediaTitle}
+    mediaText={hero?.mediaText}
+    highlights={hero?.highlights}
+  />
+
+  <Section
+    eyebrow="Services"
+    title="Common offers, ready to tailor"
+    intro="Use these entries as service templates. Keep each page focused on the client problem, the outcome, and the next step."
+  >
+    <ServiceGrid services={services} variant={home?.data.servicesVariant} />
+  </Section>
+
+  <Section
+    variant="surface"
+    eyebrow="Proof"
+    title="Simple trust signals"
+    intro="Replace these placeholders with real client testimonials, partner logos, memberships, or local credentials."
+  >
+    <Testimonials testimonials={testimonials} variant={home?.data.testimonialsVariant} />
+  </Section>
+
+  <Section eyebrow="Associations" title="A neutral strip for credibility">
+    <LogoStrip />
+  </Section>
+
+  <Section variant="surface" eyebrow="Media" title="Placeholder gallery">
+    <GalleryBlock variant={home?.data.galleryVariant} />
+  </Section>
+
+  {embeds.map((embed) => <EmbedSection embed={embed} />)}
+
+  <Section eyebrow="Questions" title="Frequently asked questions">
+    <FAQList faqs={faqs} />
+  </Section>
+
+  <CTABand
+    title="Ready to adapt this for a client?"
+    text="Start with the client brief, update the site settings, then swap the brand tokens before writing detailed copy."
+    label="Contact"
+    href="/contact/"
+    variant={home?.data.ctaVariant}
+  />
+</BaseLayout>

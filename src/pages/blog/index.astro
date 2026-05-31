@@ -1,0 +1,22 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import PageIntro from '@components/PageIntro.astro';
+import Section from '@components/Section.astro';
+import PostList from '@components/PostList.astro';
+import { byDateDesc } from '../../lib/content';
+
+const posts = byDateDesc((await getCollection('posts')).filter((post) => !post.data.draft));
+---
+
+<BaseLayout title="News" description="News and updates for this small business website.">
+  <PageIntro
+    eyebrow="News"
+    title="Updates and useful notes"
+    intro="Use this section for practical articles, announcements, recent work, or client education."
+  />
+
+  <Section>
+    <PostList posts={posts} />
+  </Section>
+</BaseLayout>

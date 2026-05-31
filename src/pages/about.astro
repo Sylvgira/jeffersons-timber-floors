@@ -1,0 +1,37 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import PageIntro from '@components/PageIntro.astro';
+import Section from '@components/Section.astro';
+import GalleryBlock from '@components/GalleryBlock.astro';
+import CTABand from '@components/CTABand.astro';
+---
+
+<BaseLayout title="About" description="About page template for a small business website.">
+  <PageIntro
+    eyebrow="About"
+    title="A concise story with practical proof"
+    intro="Use this page to explain who the business serves, what it is known for, and why clients trust it."
+  />
+
+  <Section title="What clients should understand first" narrow>
+    <div class="prose">
+      <p>
+        This starter keeps the about page direct. Replace this copy with the client’s origin story, service philosophy,
+        qualifications, and local context.
+      </p>
+      <p>
+        For most small businesses, the goal is not a long biography. The goal is to make a visitor confident that the
+        business is real, capable, and easy to contact.
+      </p>
+    </div>
+  </Section>
+
+  <Section variant="surface" eyebrow="Images" title="Team, workplace, or process">
+    <GalleryBlock />
+  </Section>
+
+  <CTABand
+    title="Make the next step obvious"
+    text="A strong about page should naturally lead visitors toward an enquiry, booking, or service page."
+  />
+</BaseLayout>

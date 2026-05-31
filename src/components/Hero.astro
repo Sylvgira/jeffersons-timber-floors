@@ -1,0 +1,209 @@
+---
+interface Props {
+  variant?: 'simple' | 'split-media' | 'centered' | 'service-led';
+  mediaPosition?: 'left' | 'right';
+  eyebrow?: string;
+  title: string;
+  intro: string;
+  primaryLabel?: string;
+  primaryUrl?: string;
+  secondaryLabel?: string;
+  secondaryUrl?: string;
+  mediaLabel?: string;
+  mediaTitle?: string;
+  mediaText?: string;
+  highlights?: string[];
+}
+
+const {
+  variant = 'simple',
+  mediaPosition = 'right',
+  eyebrow,
+  title,
+  intro,
+  primaryLabel = 'Start a conversation',
+  primaryUrl = '/contact/',
+  secondaryLabel,
+  secondaryUrl,
+  mediaLabel = 'Media placeholder',
+  mediaTitle = 'Client-specific image or proof point',
+  mediaText = 'Swap this panel for photography, a short proof statement, or a location/service-area cue.',
+  highlights = ['Consulting', 'Implementation', 'Support']
+} = Astro.props;
+
+const showPanel = variant !== 'centered';
+---
+
+<section class:list={['hero', `hero--${variant}`, `hero--media-${mediaPosition}`]}>
+  <div class="hero__inner container">
+    <div class="hero__content">
+      {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+      <h1>{title}</h1>
+      <p>{intro}</p>
+      <div class="button-row">
+        <a class="button" href={primaryUrl}>{primaryLabel}</a>
+        {secondaryLabel && secondaryUrl && (
+          <a class="button button--secondary" href={secondaryUrl}>{secondaryLabel}</a>
+        )}
+      </div>
+    </div>
+    {showPanel && (
+      <div class="hero__panel" aria-hidden="true">
+        {variant === 'service-led' ? (
+          <>
+            <span>{mediaLabel}</span>
+            <strong>{mediaTitle}</strong>
+            <ul>
+              {highlights.map((highlight) => <li>{highlight}</li>)}
+            </ul>
+          </>
+        ) : (
+          <>
+            <div></div>
+            <div></div>
+            <p>{mediaText}</p>
+          </>
+        )}
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-block: clamp(4rem, 10vw, 8rem);
+    border-bottom: 1px solid var(--color-rule);
+  }
+
+  .hero__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.75fr);
+    gap: clamp(2rem, 7vw, 6rem);
+    align-items: center;
+  }
+
+  .hero__content {
+    max-width: 48rem;
+  }
+
+  .hero--media-left .hero__content {
+    order: 2;
+  }
+
+  .hero--media-left .hero__panel {
+    order: 1;
+  }
+
+  .hero--centered .hero__inner {
+    display: block;
+    max-width: var(--container-narrow);
+    text-align: center;
+  }
+
+  .hero--centered .hero__content,
+  .hero--centered p:not(.eyebrow),
+  .hero--centered .button-row {
+    margin-inline: auto;
+    justify-content: center;
+  }
+
+  .hero h1 {
+    margin-bottom: var(--space-5);
+  }
+
+  .hero__content > p:not(.eyebrow) {
+    max-width: 39rem;
+    margin-bottom: var(--space-6);
+    font-size: var(--text-md);
+  }
+
+  .hero__panel {
+    display: grid;
+    gap: var(--space-4);
+    min-height: 25rem;
+    padding: var(--space-5);
+    border: 1px solid var(--color-rule);
+    border-radius: var(--radius-md);
+    background: linear-gradient(180deg, var(--color-section), var(--color-page));
+  }
+
+  .hero__panel div,
+  .hero__panel li {
+    border: 1px solid var(--color-rule);
+    border-radius: var(--radius-sm);
+    background: var(--color-page);
+  }
+
+  .hero__panel div:nth-child(1) {
+    min-height: 7rem;
+  }
+
+  .hero__panel div:nth-child(2) {
+    min-height: 4rem;
+    width: 78%;
+  }
+
+  .hero .hero__panel p {
+    align-self: end;
+    margin: 0;
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--color-rule);
+    font-size: var(--text-sm);
+  }
+
+  .hero--split-media .hero__panel {
+    min-height: 28rem;
+  }
+
+  .hero--split-media .hero__panel div:first-child {
+    min-height: 15rem;
+  }
+
+  .hero--service-led .hero__panel {
+    align-content: start;
+    min-height: 22rem;
+  }
+
+  .hero__panel span {
+    color: var(--color-text-muted);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .hero__panel strong {
+    color: var(--color-heading);
+    font-size: var(--text-xl);
+    line-height: var(--line-heading);
+  }
+
+  .hero__panel ul {
+    display: grid;
+    gap: var(--space-3);
+    margin: var(--space-4) 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .hero__panel li {
+    padding: var(--space-4);
+    color: var(--color-text);
+    font-weight: 700;
+  }
+
+  @media (max-width: 820px) {
+    .hero__inner {
+      grid-template-columns: 1fr;
+    }
+
+    .hero--media-left .hero__content,
+    .hero--media-left .hero__panel {
+      order: initial;
+    }
+
+    .hero__panel {
+      min-height: 18rem;
+    }
+  }
+</style>

@@ -1,0 +1,28 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import PageIntro from '@components/PageIntro.astro';
+import Section from '@components/Section.astro';
+import ServiceGrid from '@components/ServiceGrid.astro';
+import CTABand from '@components/CTABand.astro';
+import { byOrder } from '../../lib/content';
+
+const services = byOrder(await getCollection('services'));
+---
+
+<BaseLayout title="Services" description="Services page template for a small business website.">
+  <PageIntro
+    eyebrow="Services"
+    title="Clear service paths"
+    intro="Show visitors the main ways they can work with the business. Each service should have a distinct outcome."
+  />
+
+  <Section>
+    <ServiceGrid services={services} />
+  </Section>
+
+  <CTABand
+    title="Not sure which service fits?"
+    text="Invite visitors to send a short enquiry so the business can recommend the right path."
+  />
+</BaseLayout>

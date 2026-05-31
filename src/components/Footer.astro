@@ -1,0 +1,123 @@
+---
+interface Props {
+  site: {
+    name: string;
+    email?: string;
+    phone?: string;
+    address?: string;
+    socialLinks?: Array<{ label: string; url: string }>;
+  };
+}
+
+const { site } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="site-footer__inner container">
+    <div>
+      <a class="site-footer__brand" href="/">{site.name}</a>
+      <p>Clear, useful information for people deciding whether to get in touch.</p>
+    </div>
+    <div class="site-footer__columns">
+      <div>
+        <h2>Explore</h2>
+        <a href="/about/">About</a>
+        <a href="/services/">Services</a>
+        <a href="/blog/">News</a>
+        <a href="/contact/">Contact</a>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        {site.email && <a href={`mailto:${site.email}`}>{site.email}</a>}
+        {site.phone && <a href={`tel:${site.phone}`}>{site.phone}</a>}
+        {site.address && <p>{site.address}</p>}
+      </div>
+      {site.socialLinks && site.socialLinks.length > 0 && (
+        <div>
+          <h2>Social</h2>
+          {site.socialLinks.map((link) => <a href={link.url}>{link.label}</a>)}
+        </div>
+      )}
+    </div>
+  </div>
+  <div class="site-footer__meta container">
+    <span>&copy; {year} {site.name}</span>
+    <a href="/privacy/">Privacy</a>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--color-rule);
+    background: var(--color-section);
+  }
+
+  .site-footer__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+    gap: var(--space-8);
+    padding-block: var(--section-y-compact);
+  }
+
+  .site-footer__brand {
+    display: inline-block;
+    margin-bottom: var(--space-3);
+    color: var(--color-heading);
+    font-size: var(--text-lg);
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .site-footer__columns {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-6);
+  }
+
+  .site-footer h2 {
+    margin-bottom: var(--space-3);
+    font-size: var(--text-sm);
+  }
+
+  .site-footer a {
+    display: block;
+    width: fit-content;
+    margin-top: var(--space-2);
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+    text-decoration: none;
+  }
+
+  .site-footer p {
+    max-width: 28rem;
+    margin-bottom: 0;
+    font-size: var(--text-sm);
+  }
+
+  .site-footer__meta {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding-block: var(--space-5);
+    border-top: 1px solid var(--color-rule);
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+  }
+
+  .site-footer__meta a {
+    margin: 0;
+  }
+
+  @media (max-width: 760px) {
+    .site-footer__inner,
+    .site-footer__columns {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+
+    .site-footer__meta {
+      flex-direction: column;
+    }
+  }
+</style>
