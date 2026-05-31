@@ -19,6 +19,14 @@
   --color-overlay-strong: rgba(0, 0, 0, 0.75);
   --color-gold: #b8942e;
 
+  /* Brand/Theme dark variables (used for dark sections like header, footer, etc.) */
+  --color-dark: #111111;
+  --color-dark-text: var(--color-white);
+  --color-dark-text-muted: rgba(255, 255, 255, 0.65);
+  --color-dark-text-dim: rgba(255, 255, 255, 0.45);
+  --color-dark-border-soft: rgba(255, 255, 255, 0.08);
+  --color-dark-border-medium: rgba(255, 255, 255, 0.3);
+
   /* Semantic aliases used by components. */
   --color-page: var(--color-white);
   --color-text: var(--color-ink);

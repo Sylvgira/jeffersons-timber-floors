@@ -44,8 +44,8 @@ const isCurrent = (href: string) => pathname === href || pathname.startsWith(hre
 
 <style>
   .site-header {
-    background: #111111;
-    color: #ffffff;
+    background: var(--color-dark);
+    color: var(--color-white);
     position: sticky;
     top: 0;
     z-index: 50;
@@ -60,7 +60,7 @@ const isCurrent = (href: string) => pathname === href || pathname.startsWith(hre
   }
 
   .site-header__brand {
-    color: #ffffff;
+    color: var(--color-white);
     text-decoration: none;
     line-height: 0;
   }
@@ -78,7 +78,7 @@ const isCurrent = (href: string) => pathname === href || pathname.startsWith(hre
   }
 
   .site-header__nav a {
-    color: rgba(255, 255, 255, 0.55);
+    color: var(--color-dark-text-muted);
     font-size: var(--text-sm);
     font-weight: 650;
     text-decoration: none;
@@ -89,14 +89,14 @@ const isCurrent = (href: string) => pathname === href || pathname.startsWith(hre
 
   .site-header__nav a:hover,
   .site-header__nav a[aria-current='page'] {
-    color: #ffffff;
+    color: var(--color-white);
   }
 
   .site-header__cta {
     min-height: 2.5rem;
     padding-inline: var(--space-4);
-    border-color: rgba(255, 255, 255, 0.35);
-    color: #ffffff;
+    border-color: var(--color-dark-border-medium);
+    color: var(--color-white);
   }
 
   @media (max-width: 760px) {

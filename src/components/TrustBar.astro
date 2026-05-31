@@ -52,7 +52,7 @@ const defaultIcons = [
 
 <style>
   .trust-bar {
-    background: #111111;
+    background: var(--color-dark);
     padding-block: var(--section-y-compact);
   }
 
@@ -68,9 +68,9 @@ const defaultIcons = [
     font-family: var(--font-condensed);
     font-size: clamp(1.3rem, 2.5vw, var(--text-xl));
     font-weight: 700;
-    letter-spacing: 0.02em;
+    letter-spacing: 0;
     text-transform: uppercase;
-    color: #ffffff;
+    color: var(--color-white);
     white-space: nowrap;
     flex-shrink: 0;
   }
@@ -106,7 +106,7 @@ const defaultIcons = [
   }
 
   .trust-item__label {
-    color: rgba(255, 255, 255, 0.75);
+    color: var(--color-dark-text-muted);
     font-size: var(--text-sm);
     font-weight: 600;
   }

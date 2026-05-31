@@ -107,8 +107,8 @@ const fallbackIcons = [
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 0;
-    background: #111111;
-    color: #ffffff;
+    background: var(--color-dark);
+    color: var(--color-white);
     border-radius: var(--radius-md);
     overflow: hidden;
   }
@@ -126,11 +126,11 @@ const fallbackIcons = [
   }
 
   .service-icon-card:hover {
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--color-dark-border-soft);
   }
 
   .service-icon-card + .service-icon-card {
-    border-left: 1px solid rgba(255, 255, 255, 0.12);
+    border-left: 1px solid var(--color-dark-border-soft);
   }
 
   .service-icon-card__icon {
@@ -153,15 +153,15 @@ const fallbackIcons = [
     font-family: var(--font-condensed);
     font-size: var(--text-lg);
     font-weight: 700;
-    letter-spacing: 0.02em;
+    letter-spacing: 0;
     text-transform: uppercase;
-    color: #ffffff;
+    color: var(--color-white);
   }
 
   .service-grid--icon-grid p {
     margin: 0;
     font-size: var(--text-sm);
-    color: rgba(255, 255, 255, 0.65);
+    color: var(--color-dark-text-muted);
     line-height: 1.55;
   }
 

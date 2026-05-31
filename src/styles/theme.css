@@ -177,19 +177,19 @@ p {
 
 /* Light variants — for dark backgrounds */
 .button--primary-light {
-  background: #ffffff;
-  color: #111111;
-  border-color: #ffffff;
+  background: var(--color-white);
+  color: var(--color-dark);
+  border-color: var(--color-white);
 }
 
 .button--secondary-light {
-  border-color: rgba(255, 255, 255, 0.4);
-  color: #ffffff;
+  border-color: var(--color-dark-border-medium);
+  color: var(--color-white);
 }
 
 .button--secondary-light:hover {
-  border-color: #ffffff;
-  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--color-white);
+  background: var(--color-dark-border-soft);
 }
 
 .button--tertiary-light {
@@ -197,7 +197,7 @@ p {
   min-height: auto;
   border: none;
   border-radius: 0;
-  color: rgba(255, 255, 255, 0.75);
+  color: var(--color-dark-text-muted);
   text-decoration: underline;
   text-underline-offset: 0.18em;
   text-decoration-color: transparent;
@@ -207,7 +207,7 @@ p {
 .button--tertiary-light:hover {
   text-decoration-color: currentColor;
   filter: none;
-  color: #ffffff;
+  color: var(--color-white);
 }
 
 .button--outline-gold {
@@ -268,11 +268,11 @@ h1,
 h2,
 h3 {
   text-transform: uppercase;
-  letter-spacing: 0.03em;
+  letter-spacing: 0;
 }
 
 .section__header h2 {
-  letter-spacing: 0.05em;
+  letter-spacing: 0;
 }
 
 /* Keep hero h1 at its custom size — the rule above adds caps */
