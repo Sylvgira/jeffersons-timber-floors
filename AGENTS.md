@@ -37,3 +37,23 @@ This repository is designed for AI-assisted client build-outs. Preserve the temp
 - Any field added to a content schema should also be added to `public/admin/config.yml`.
 - Any new collection should be documented in `README.md`.
 - Keep filenames slug-friendly and content portable.
+
+## Stock Photography
+
+Source photos without a browser. Workflow:
+
+1. **Search** — find an Unsplash photo page via web_search
+   ```
+   web_search("unsplash.com timber floor interior living room")
+   ```
+2. **Extract the photo ID** — photo page URLs contain the ID, e.g. `Kq8uV6tZM20` from `.../wooden-floor-with-herringbone-pattern-Kq8uV6tZM20`
+3. **Download direct** — build the download URL and curl it:
+   ```
+   curl -sL -o public/uploads/filename.jpg \
+     "https://images.unsplash.com/photo-{ID}?w=2000&q=85"
+   ```
+   Add `&fit=crop&h={height}` for specific aspect ratios.
+4. **Wire it in** — reference `/uploads/filename.jpg` in the component or page.
+5. **Keep it lean** — images over ~500KB are fine for hero backgrounds but resize gallery images to `w=800&h=1100` to keep page weight down.
+
+No browser, no API key, no page rendering. Search → fetch → curl → done.
