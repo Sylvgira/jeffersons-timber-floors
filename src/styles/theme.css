@@ -282,3 +282,8 @@ h3 {
 .section--surface + .section--surface {
   padding-top: 0;
 }
+
+/* Extra bottom padding before trust bar */
+.section:has(.gallery-block) {
+  padding-bottom: calc(var(--section-y) + var(--space-6));
+}
