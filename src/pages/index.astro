@@ -7,7 +7,6 @@ import ServiceGrid from '@components/ServiceGrid.astro';
 import Testimonials from '@components/Testimonials.astro';
 import FAQList from '@components/FAQList.astro';
 import GalleryBlock from '@components/GalleryBlock.astro';
-import CTABand from '@components/CTABand.astro';
 import TrustBar from '@components/TrustBar.astro';
 import { byOrder } from '../lib/content';
 
@@ -94,12 +93,4 @@ const servicesWithIcons = services.map((s, i) => ({
   <Section eyebrow="Questions" title="Frequently asked questions">
     <FAQList faqs={faqs} />
   </Section>
-
-  <CTABand
-    title="Ready to transform your floors?"
-    text="Get in touch for a free, no-obligation quote. We'll assess your floors and recommend the best approach."
-    label="Get a free quote"
-    href="/contact/"
-    variant={home?.data.ctaVariant}
-  />
 </BaseLayout>
