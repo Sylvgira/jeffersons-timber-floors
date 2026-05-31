@@ -201,6 +201,7 @@ p {
 
 /* ── Jefferson's Timber Floors — condensed all-caps headings ── */
 
+h1,
 h2,
 h3 {
   text-transform: uppercase;
@@ -210,3 +211,5 @@ h3 {
 .section__header h2 {
   letter-spacing: 0.05em;
 }
+
+/* Keep hero h1 at its custom size — the rule above adds caps */
