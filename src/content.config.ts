@@ -59,29 +59,43 @@ const embeds = defineCollection({
   })
 });
 
+const pageBase = {
+  seoTitle: z.string().optional(),
+  seoDescription: z.string().optional(),
+  eyebrow: z.string().optional(),
+  title: z.string().optional(),
+  intro: z.string().optional(),
+  body: z.string().optional()
+};
+
+const pageHomeFields = {
+  hero: z.object({
+    variant: z.enum(['simple', 'split-media', 'centered', 'service-led', 'image-full']).default('simple'),
+    mediaPosition: z.enum(['left', 'right']).default('right'),
+    eyebrow: z.string().optional(),
+    title: z.string(),
+    intro: z.string(),
+    primaryLabel: z.string().optional(),
+    primaryUrl: z.string().optional(),
+    secondaryLabel: z.string().optional(),
+    secondaryUrl: z.string().optional(),
+    mediaLabel: z.string().optional(),
+    mediaTitle: z.string().optional(),
+    mediaText: z.string().optional(),
+    highlights: z.array(z.string()).default([])
+  }),
+  servicesVariant: z.enum(['grid', 'list', 'featured-first', 'icon-grid']).default('grid'),
+  testimonialsVariant: z.enum(['grid', 'stacked']).default('grid'),
+  galleryVariant: z.enum(['grid', 'feature-left', 'feature-right', 'portfolio']).default('grid'),
+  ctaVariant: z.enum(['band', 'split', 'inline']).default('band')
+};
+
 const pages = defineCollection({
   loader: glob({ pattern: '**/*.json', base: './src/content/pages' }),
-  schema: z.object({
-    hero: z.object({
-      variant: z.enum(['simple', 'split-media', 'centered', 'service-led', 'image-full']).default('simple'),
-      mediaPosition: z.enum(['left', 'right']).default('right'),
-      eyebrow: z.string().optional(),
-      title: z.string(),
-      intro: z.string(),
-      primaryLabel: z.string().optional(),
-      primaryUrl: z.string().optional(),
-      secondaryLabel: z.string().optional(),
-      secondaryUrl: z.string().optional(),
-      mediaLabel: z.string().optional(),
-      mediaTitle: z.string().optional(),
-      mediaText: z.string().optional(),
-      highlights: z.array(z.string()).default([])
-    }),
-    servicesVariant: z.enum(['grid', 'list', 'featured-first', 'icon-grid']).default('grid'),
-    testimonialsVariant: z.enum(['grid', 'stacked']).default('grid'),
-    galleryVariant: z.enum(['grid', 'feature-left', 'feature-right', 'portfolio']).default('grid'),
-    ctaVariant: z.enum(['band', 'split', 'inline']).default('band')
-  })
+  schema: z.union([
+    z.object({ ...pageBase, ...pageHomeFields }),
+    z.object(pageBase)
+  ])
 });
 
 const settings = defineCollection({

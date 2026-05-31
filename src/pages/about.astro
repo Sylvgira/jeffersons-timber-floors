@@ -1,29 +1,25 @@
 ---
+import { getEntry } from 'astro:content';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import PageIntro from '@components/PageIntro.astro';
 import Section from '@components/Section.astro';
 import GalleryBlock from '@components/GalleryBlock.astro';
 import CTABand from '@components/CTABand.astro';
+
+const page = await getEntry('pages', 'about');
+const { data } = page;
 ---
 
-<BaseLayout title="About" description="About Jefferson's Timber Floors — Melbourne's premium timber floor sanding, polishing, and installation specialists.">
+<BaseLayout title={data.seoTitle} description={data.seoDescription}>
   <PageIntro
-    eyebrow="About"
-    title="Craftsmanship you can trust"
-    intro="Jefferson's Timber Floors has been restoring and installing timber flooring across Melbourne for over 20 years. We combine old-school attention to detail with modern equipment and finishes."
+    eyebrow={data.eyebrow}
+    title={data.title}
+    intro={data.intro}
   />
 
   <Section title="Our approach" narrow>
     <div class="prose">
-      <p>
-        Every floor tells a story. Whether it's a century-old Baltic pine in a Carlton terrace or wide-board blackbutt in a new Fitzroy build, we treat every project with the care it deserves.
-      </p>
-      <p>
-        We're known for dustless sanding, precise colour matching, and finishes that stand up to Australian conditions. Our team is fully licensed, insured, and committed to leaving your home cleaner than we found it.
-      </p>
-      <p>
-        From a single room resand to a full home installation, we bring the same level of craftsmanship to every job. That's why Melbourne homeowners and businesses keep coming back.
-      </p>
+      {data.body.split('\n\n').filter(Boolean).map(p => <p>{p}</p>)}
     </div>
   </Section>
 
