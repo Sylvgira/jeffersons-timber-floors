@@ -276,3 +276,13 @@ h3 {
 }
 
 /* Keep hero h1 at its custom size — the rule above adds caps */
+
+/* Collapse adjacent section spacing */
+.section + .section {
+  padding-top: 0;
+}
+
+.section + .trust-bar,
+.trust-bar + .section {
+  padding-top: 0;
+}
