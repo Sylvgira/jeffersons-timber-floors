@@ -40,12 +40,6 @@ const portfolioItems = items.length >= 4
         </figure>
       ))}
     </div>
-    <div class="portfolio-dots" aria-hidden="true">
-      <span class="active"></span>
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
   </div>
 ) : (
   <div class:list={['gallery-block', `gallery-block--${variant}`]}>
@@ -184,25 +178,6 @@ const portfolioItems = items.length >= 4
 
   .portfolio-card figcaption {
     margin-top: var(--space-3);
-  }
-
-  .portfolio-dots {
-    display: flex;
-    justify-content: center;
-    gap: var(--space-2);
-    margin-top: var(--space-5);
-  }
-
-  .portfolio-dots span {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--color-rule);
-    transition: background 0.2s;
-  }
-
-  .portfolio-dots span.active {
-    background: var(--color-text);
   }
 
   @media (max-width: 760px) {
