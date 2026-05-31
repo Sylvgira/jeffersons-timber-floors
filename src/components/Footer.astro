@@ -16,36 +16,110 @@ const isDark = variant === 'dark';
 ---
 
 <footer class:list={['site-footer', isDark && 'site-footer--dark']}>
-  <div class="site-footer__inner container">
-    <div>
-      <a class="site-footer__brand" href="/">{site.name}</a>
-      <p>Melbourne's premium timber floor sanding, polishing, and installation specialists.</p>
+
+  <!-- ─── value props row ─── -->
+  <div class="footer-props">
+    <div class="footer-props__inner container">
+      <p class="footer-props__tagline">MELBOURNE'S TRUSTED TIMBER FLOORING SPECIALISTS</p>
+      <div class="footer-props__items">
+        <div class="footer-prop">
+          <span class="footer-prop__check">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </span>
+          <span class="footer-prop__label">Local &amp; Reliable</span>
+        </div>
+        <div class="footer-prop">
+          <span class="footer-prop__check">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </span>
+          <span class="footer-prop__label">Premium Craft</span>
+        </div>
+        <div class="footer-prop">
+          <span class="footer-prop__check">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </span>
+          <span class="footer-prop__label">5-Star Service</span>
+        </div>
+      </div>
+      <a class="footer-props__cta" href="/contact/">
+        GET A FREE QUOTE
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
     </div>
-    <div class="site-footer__columns">
-      <div>
-        <h2>Explore</h2>
-        <a href="/about/">About</a>
-        <a href="/services/">Services</a>
-        <a href="/blog/">News</a>
-        <a href="/contact/">Contact</a>
-      </div>
-      <div>
-        <h2>Contact</h2>
-        {site.email && <a href={`mailto:${site.email}`}>{site.email}</a>}
-        {site.phone && <a href={`tel:${site.phone}`}>{site.phone}</a>}
-        {site.address && <p>{site.address}</p>}
-      </div>
+  </div>
+
+  <hr class="footer-divider" aria-hidden="true" />
+
+  <!-- ─── main 4-column layout ─── -->
+  <div class="footer-main container">
+    <!-- col 1: brand -->
+    <div class="footer-col footer-col--brand">
+      <a class="footer-logo" href="/" aria-label={`${site.name} home`}>
+        <img src="/uploads/jeffersons-logo.svg" alt={site.name} class="footer-logo__img" />
+      </a>
+      <p class="footer-col__tagline">Melbourne's timber flooring specialists.</p>
       {site.socialLinks && site.socialLinks.length > 0 && (
-        <div>
-          <h2>Social</h2>
-          {site.socialLinks.map((link) => <a href={link.url}>{link.label}</a>)}
+        <div class="footer-social">
+          {site.socialLinks.map((link) => (
+            <a class="footer-social__link" href={link.url} aria-label={link.label} target="_blank" rel="noopener">
+              {link.label.toLowerCase() === 'instagram' ? (
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              ) : link.label.toLowerCase() === 'facebook' ? (
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              )}
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+
+    <!-- col 2: services -->
+    <div class="footer-col">
+      <h2 class="footer-col__heading">SERVICES</h2>
+      <a href="/services/timber-floor-installation/">Installation</a>
+      <a href="/services/floor-sanding-polishing/">Sanding &amp; Polishing</a>
+      <a href="/services/recoating/">Recoating</a>
+      <a href="/services/floor-repairs-maintenance/">Repairs &amp; Maintenance</a>
+    </div>
+
+    <!-- col 3: company -->
+    <div class="footer-col">
+      <h2 class="footer-col__heading">COMPANY</h2>
+      <a href="/about/">About Us</a>
+      <a href="/faq/">FAQ</a>
+    </div>
+
+    <!-- col 4: get in touch -->
+    <div class="footer-col">
+      <h2 class="footer-col__heading">GET IN TOUCH</h2>
+      {site.phone && (
+        <div class="footer-contact">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <a href={`tel:${site.phone}`}>{site.phone}</a>
+        </div>
+      )}
+      {site.email && (
+        <div class="footer-contact">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href={`mailto:${site.email}`}>{site.email}</a>
+        </div>
+      )}
+      {site.address && (
+        <div class="footer-contact">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>{site.address}</span>
         </div>
       )}
     </div>
   </div>
-  <div class="site-footer__meta container">
-    <span>&copy; {year} {site.name}</span>
-    <a href="/privacy/">Privacy</a>
+
+  <!-- ─── bottom bar ─── -->
+  <hr class="footer-divider" aria-hidden="true" />
+  <div class="footer-bottom container">
+    <span>&copy; {year} Jefferson's Timber Floors. All rights reserved.</span>
+    <span>Website by Studio Junction</span>
   </div>
 </footer>
 
@@ -55,117 +129,283 @@ const isDark = variant === 'dark';
     background: var(--color-section);
   }
 
-  .site-footer__inner {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
-    gap: var(--space-8);
-    padding-block: var(--section-y-compact);
-  }
-
-  .site-footer__brand {
-    display: inline-block;
-    margin-bottom: var(--space-3);
-    color: var(--color-heading);
-    font-size: var(--text-lg);
-    font-weight: 800;
-    text-decoration: none;
-  }
-
-  .site-footer__columns {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: var(--space-6);
-  }
-
-  .site-footer h2 {
-    margin-bottom: var(--space-3);
-    font-size: var(--text-sm);
-  }
-
-  .site-footer a {
-    display: block;
-    width: fit-content;
-    margin-top: var(--space-2);
-    color: var(--color-text-muted);
-    font-size: var(--text-sm);
-    text-decoration: none;
-  }
-
-  .site-footer p {
-    max-width: 28rem;
-    margin-bottom: 0;
-    font-size: var(--text-sm);
-  }
-
-  .site-footer__meta {
-    display: flex;
-    justify-content: space-between;
-    gap: var(--space-4);
-    padding-block: var(--space-5);
-    border-top: 1px solid var(--color-rule);
-    color: var(--color-text-muted);
-    font-size: var(--text-sm);
-  }
-
-  .site-footer__meta a {
-    margin: 0;
-  }
-
-  /* --- dark variant --- */
-
   .site-footer--dark {
     border-top: none;
     background: #111111;
     color: #ffffff;
   }
 
-  .site-footer--dark .site-footer__brand {
+  /* ─── dividers ─── */
+
+  .footer-divider {
+    margin: 0;
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* ─── top value props row ─── */
+
+  .footer-props {
+    padding-block: var(--space-5);
+  }
+
+  .footer-props__inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-5);
+    flex-wrap: wrap;
+  }
+
+  .footer-props__tagline {
+    margin: 0;
+    font-family: var(--font-condensed);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #ffffff;
+    flex-shrink: 0;
+  }
+
+  .footer-props__items {
+    display: flex;
+    align-items: center;
+    gap: var(--space-5);
+    flex: 1;
+    flex-wrap: wrap;
+    min-width: 0;
+  }
+
+  .footer-prop {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .footer-prop__check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-gold);
+    flex-shrink: 0;
+  }
+
+  .footer-prop__label {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .footer-props__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 0.6rem 1.25rem;
+    border: 1.5px solid var(--color-gold);
+    border-radius: 2px;
+    color: var(--color-gold);
+    font-family: var(--font-condensed);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s;
+    flex-shrink: 0;
+  }
+
+  .footer-props__cta:hover {
+    background: rgba(184, 148, 46, 0.1);
+  }
+
+  /* ─── main 4-column grid ─── */
+
+  .footer-main {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 0.8fr 1.2fr;
+    gap: var(--space-8);
+    padding-block: var(--section-y-compact);
+  }
+
+  /* vertical dividers between columns */
+  .footer-col {
+    position: relative;
+  }
+
+  .footer-col:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: calc(-1 * var(--space-8) / 2);
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateX(0.5px);
+  }
+
+  /* column 1 — brand */
+  .footer-col--brand {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .footer-logo {
+    display: inline-block;
+    line-height: 0;
+    text-decoration: none;
+  }
+
+  .footer-logo__img {
+    height: 1.75rem;
+    width: auto;
+  }
+
+  .footer-col__tagline {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: var(--text-sm);
+    line-height: 1.5;
+  }
+
+  /* social icons */
+  .footer-social {
+    display: flex;
+    gap: var(--space-3);
+    margin-top: auto;
+  }
+
+  .footer-social__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .footer-social__link:hover {
+    border-color: #ffffff;
     color: #ffffff;
   }
 
-  .site-footer--dark h2 {
-    color: rgba(255, 255, 255, 0.55);
+  /* column headings */
+  .footer-col__heading {
+    margin: 0 0 var(--space-4);
+    padding-bottom: var(--space-2);
+    position: relative;
     font-family: var(--font-condensed);
     font-size: var(--text-xs);
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
   }
 
-  .site-footer--dark a {
-    color: rgba(255, 255, 255, 0.75);
+  .footer-col__heading::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 1.25rem;
+    height: 2px;
+    background: var(--color-gold);
   }
 
-  .site-footer--dark a:hover {
-    color: #ffffff;
-  }
-
-  .site-footer--dark p {
+  /* column links */
+  .footer-col a {
+    display: block;
+    width: fit-content;
+    margin-top: var(--space-2);
     color: rgba(255, 255, 255, 0.65);
+    font-size: var(--text-sm);
+    text-decoration: none;
+    transition: color 0.2s;
   }
 
-  .site-footer--dark .site-footer__meta {
-    border-top-color: rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.45);
-  }
-
-  .site-footer--dark .site-footer__meta a {
-    color: rgba(255, 255, 255, 0.45);
-  }
-
-  .site-footer--dark .site-footer__meta a:hover {
+  .footer-col a:hover {
     color: #ffffff;
   }
 
-  @media (max-width: 760px) {
-    .site-footer__inner,
-    .site-footer__columns {
-      grid-template-columns: 1fr;
+  /* contact items */
+  .footer-contact {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+    color: rgba(255, 255, 255, 0.65);
+    font-size: var(--text-sm);
+  }
+
+  .footer-contact svg {
+    flex-shrink: 0;
+    margin-top: 0.2em;
+    color: rgba(255, 255, 255, 0.35);
+  }
+
+  .footer-contact a,
+  .footer-contact span {
+    color: rgba(255, 255, 255, 0.65);
+    text-decoration: none;
+    line-height: 1.5;
+  }
+
+  .footer-contact a:hover {
+    color: #ffffff;
+  }
+
+  /* ─── bottom bar ─── */
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding-block: var(--space-4);
+    color: rgba(255, 255, 255, 0.35);
+    font-size: var(--text-xs);
+  }
+
+  /* ─── responsive ─── */
+
+  @media (max-width: 900px) {
+    .footer-main {
+      grid-template-columns: 1fr 1fr;
       gap: var(--space-6);
     }
 
-    .site-footer__meta {
+    .footer-col:not(:last-child)::after {
+      display: none;
+    }
+
+    .footer-props__inner {
       flex-direction: column;
+      text-align: center;
+    }
+
+    .footer-props__items {
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 540px) {
+    .footer-main {
+      grid-template-columns: 1fr;
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .footer-props__items {
+      flex-direction: column;
+      gap: var(--space-3);
     }
   }
 </style>
