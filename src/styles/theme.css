@@ -198,3 +198,15 @@ p {
 .skip-link:focus {
   transform: translateY(var(--space-4));
 }
+
+/* ── Jefferson's Timber Floors — condensed all-caps headings ── */
+
+h2,
+h3 {
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.section__header h2 {
+  letter-spacing: 0.05em;
+}
