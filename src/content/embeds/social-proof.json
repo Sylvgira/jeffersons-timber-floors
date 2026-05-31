@@ -1,8 +1,8 @@
 {
-  "title": "Latest updates",
+  "title": "Latest from Instagram",
   "eyebrow": "Social",
-  "intro": "Paste a trusted third-party embed here when the client wants a live social feed, reviews widget, map, booking widget, or similar section.",
-  "provider": "Example",
+  "intro": "Follow us for recent projects, behind-the-scenes progress, and timber flooring inspiration across Melbourne.",
+  "provider": "Instagram",
   "enabled": false,
   "order": 99,
   "embedCode": "<!-- Paste the full embed code from Elfsight or another trusted provider. Keep this disabled until real client code is added. -->"

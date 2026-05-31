@@ -2,7 +2,7 @@ local_backend: true
 
 backend:
   name: github
-  repo: owner/repository
+  repo: Sylvgira/jeffersons-timber-floors
   branch: main
 
 media_folder: public/uploads

@@ -1,20 +1,20 @@
 {
-  "name": "Client Business",
-  "description": "A clear small-business website starter built for fast client adaptation.",
-  "url": "https://example.com",
-  "email": "hello@example.com",
+  "name": "Jefferson's Timber Floors",
+  "description": "Melbourne's premium timber floor sanding, polishing, and installation specialists.",
+  "url": "https://jeffersonstimberfloors.com.au",
+  "email": "info@jeffersonstimberfloors.com.au",
   "phone": "+61 400 000 000",
-  "address": "123 Example Street, Melbourne VIC",
-  "ctaLabel": "Book a call",
+  "address": "Melbourne, Victoria",
+  "ctaLabel": "Get a free quote",
   "ctaUrl": "/contact/",
   "socialLinks": [
     {
       "label": "Instagram",
-      "url": "https://example.com"
+      "url": "https://instagram.com/jeffersonstimberfloors"
     },
     {
-      "label": "LinkedIn",
-      "url": "https://example.com"
+      "label": "Facebook",
+      "url": "https://facebook.com/jeffersonstimberfloors"
     }
   ]
 }

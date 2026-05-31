@@ -1,23 +1,14 @@
 {
   "hero": {
-    "secondaryLabel": "View services",
     "variant": "image-full",
-    "eyebrow": "Premium Timber Flooring",
-    "intro": "Melbourne's trusted timber flooring specialists. From installation to refinishing, we bring craftsmanship and care to every project.",
-    "primaryUrl": "/contact/",
-    "mediaPosition": "right",
-    "mediaLabel": "Flexible hero",
-    "mediaText": "Use this space for photography, a proof point, or a location/service cue.",
+    "eyebrow": "",
+    "title": "Melbourne's Trusted\nTimber Floor\nSpecialists",
+    "intro": "Premium timber floor sanding, polishing, and installation for homes and businesses across Melbourne.",
     "primaryLabel": "Get a free quote",
-    "mediaTitle": "Choose a hero shape that suits the client",
-    "title": "Beautiful Floors\nStart Here",
+    "primaryUrl": "/contact/",
+    "secondaryLabel": "Our services",
     "secondaryUrl": "/services/",
-    "highlights": [
-      "Consulting",
-      "Implementation",
-      "Support",
-      "Test"
-    ]
+    "highlights": []
   },
   "servicesVariant": "icon-grid",
   "testimonialsVariant": "grid",

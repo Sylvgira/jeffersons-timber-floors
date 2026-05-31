@@ -1,13 +1,13 @@
 ---
-title: Welcome to the news section
-summary: Use short posts for updates, client education, announcements, or recent work.
+title: Welcome to our news section
+summary: Project highlights, floor care tips, and company updates from Jefferson's Timber Floors.
 publishDate: 2026-01-01
-author: Team
+author: Jefferson's Team
 draft: false
-seoTitle: Welcome
-seoDescription: Example news post for the small-business client template.
+seoTitle: News — Jefferson's Timber Floors
+seoDescription: Project highlights, floor care tips, and company updates from Melbourne's premium timber flooring specialists.
 ---
 
-This starter includes a simple news section that can be renamed to suit the client. Common alternatives include Insights, Journal, Articles, Resources, or Updates.
+Welcome to the Jefferson's Timber Floors news section. Here we'll share recent projects, timber care advice, and what's happening around our workshop.
 
-Keep posts focused and useful. A small-business site usually needs fewer, better updates rather than a large publishing system.
+Check back for updates, or follow us on Instagram for day-to-day project photos.
