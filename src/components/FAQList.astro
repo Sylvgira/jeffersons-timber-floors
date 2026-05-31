@@ -21,7 +21,8 @@ const { faqs } = Astro.props;
         <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
       </summary>
       <div class="faq-answer">
-        <div class="faq-answer__inner"><p>{faq.data.answer}</p><div class="faq-answer__spacer"></div></div>
+        <p>{faq.data.answer}</p>
+        <div class="faq-answer__spacer"></div>
       </div>
     </details>
   ))}
@@ -79,6 +80,7 @@ const { faqs } = Astro.props;
   .faq-answer {
     display: grid;
     grid-template-rows: 0fr;
+    overflow: hidden;
     transition: grid-template-rows 0.3s ease;
   }
 
@@ -86,12 +88,7 @@ const { faqs } = Astro.props;
     grid-template-rows: 1fr;
   }
 
-  .faq-answer > * {
-    overflow: hidden;
-    min-height: 0;
-  }
-
-  .faq-answer__inner > * {
+  .faq-answer p {
     margin: 0;
   }
 
