@@ -16,6 +16,7 @@ import { byOrder } from '../lib/content';
 
 const services = byOrder(await getCollection('services'));
 const testimonials = byOrder(await getCollection('testimonials'));
+const url = import.meta.env.BASE_URL;
 const faqs = byOrder(await getCollection('faqs'));
 const embeds = byOrder(await getCollection('embeds')).filter((embed) => embed.data.enabled);
 
@@ -24,9 +25,9 @@ const heroBase = {
   title: 'A flexible starting point for small-business sites',
   intro: 'Use variants to change page shape without changing the brand token system.',
   primaryLabel: 'Primary action',
-  primaryUrl: '/contact/',
+  primaryUrl: `${url}contact/`,
   secondaryLabel: 'Secondary action',
-  secondaryUrl: '/services/',
+  secondaryUrl: `${url}services/`,
   mediaLabel: 'Proof point',
   mediaTitle: 'A reusable media or service panel',
   mediaText: 'Replace this with client photography, a location cue, or a concise trust signal.',
@@ -152,21 +153,21 @@ const trustItems = [
       title="Band call to action"
       text="Use for major conversion moments between sections or near the end of a page."
       label="Contact"
-      href="/contact/"
+      href={`${url}contact/`}
       variant="band"
     />
     <CTABand
       title="Split call to action"
       text="Use when the CTA needs stronger separation without changing page hierarchy."
       label="Contact"
-      href="/contact/"
+      href={`${url}contact/`}
       variant="split"
     />
     <CTABand
       title="Inline call to action"
       text="Use inside quieter pages where a full band would feel too heavy."
       label="Contact"
-      href="/contact/"
+      href={`${url}contact/`}
       variant="inline"
     />
   </section>
@@ -180,7 +181,7 @@ const trustItems = [
       title="Why choose Jefferson&apos;s?"
       items={trustItems}
       ctaLabel="Get a Quote"
-      ctaUrl="/contact/"
+      ctaUrl={`${url}contact/`}
     />
   </section>
 

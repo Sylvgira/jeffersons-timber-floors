@@ -7,7 +7,8 @@ interface Props {
   variant?: 'band' | 'split' | 'inline';
 }
 
-const { title, text, label = 'Contact us', href = '/contact/', variant = 'band' } = Astro.props;
+const url = import.meta.env.BASE_URL;
+const { title, text, label = 'Contact us', href = `${url}contact/`, variant = 'band' } = Astro.props;
 ---
 
 <section class:list={['cta-band', `cta-band--${variant}`]}>

@@ -14,11 +14,13 @@ interface Props {
 }
 
 const { site, pathname } = Astro.props;
+const url = import.meta.env.BASE_URL;
+const prefix = (path: string) => `${url}${path.replace(/^\//, '')}`;
 const nav: NavItem[] = [
-  { label: 'About', href: '/about/' },
-  { label: 'Services', href: '/services/' },
-  { label: 'News', href: '/blog/' },
-  { label: 'Contact', href: '/contact/' }
+  { label: 'About', href: `${url}about/` },
+  { label: 'Services', href: `${url}services/` },
+  { label: 'News', href: `${url}blog/` },
+  { label: 'Contact', href: `${url}contact/` }
 ];
 
 const isCurrent = (href: string) => pathname === href || pathname.startsWith(href);
@@ -26,8 +28,8 @@ const isCurrent = (href: string) => pathname === href || pathname.startsWith(hre
 
 <header class="site-header">
   <div class="site-header__inner container">
-    <a class="site-header__brand" href="/" aria-label={`${site.name} home`}>
-      <img src="/uploads/jeffersons-logo.svg" alt="Jefferson's Timber Floors" class="site-header__logo" />
+    <a class="site-header__brand" href={url} aria-label={`${site.name} home`}>
+      <img src={`${url}uploads/jeffersons-logo.svg`} alt="Jefferson's Timber Floors" class="site-header__logo" />
     </a>
     <nav class="site-header__nav" aria-label="Primary navigation">
       {nav.map((item) => (
@@ -36,7 +38,7 @@ const isCurrent = (href: string) => pathname === href || pathname.startsWith(hre
         </a>
       ))}
     </nav>
-    <a class="site-header__cta button button--secondary-light" href={site.ctaUrl ?? '/contact/'}>
+    <a class="site-header__cta button button--secondary-light" href={site.ctaUrl ? prefix(site.ctaUrl) : `${url}contact/`}>
       {site.ctaLabel ?? 'Enquire'}
     </a>
   </div>

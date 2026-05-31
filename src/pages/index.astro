@@ -16,6 +16,8 @@ const services = byOrder(await getCollection('services'));
 const testimonials = byOrder(await getCollection('testimonials'));
 const faqs = byOrder(await getCollection('faqs'));
 
+const url = import.meta.env.BASE_URL;
+const prefix = (path: string) => `${url}${path.replace(/^\//, '')}`;
 const hero = home?.data.hero;
 
 const serviceIcons = [
@@ -41,10 +43,10 @@ const servicesWithIcons = services.map((s, i) => ({
     title={hero?.title ?? 'Melbourne\'s Trusted Timber Floor Specialists'}
     intro={hero?.intro ?? 'Premium engineered timber flooring, professional installation, and subfloor preparation for homes and businesses across Melbourne.'}
     primaryLabel={hero?.primaryLabel ?? 'Get a free quote'}
-    primaryUrl={hero?.primaryUrl ?? '/contact/'}
+    primaryUrl={hero?.primaryUrl ? prefix(hero.primaryUrl) : `${url}contact/`}
     secondaryLabel={hero?.secondaryLabel}
-    secondaryUrl={hero?.secondaryUrl}
-    imageUrl="/uploads/hero-bg.jpg"
+    secondaryUrl={hero?.secondaryUrl ? prefix(hero.secondaryUrl) : undefined}
+    imageUrl={`${url}uploads/hero-bg.jpg`}
   />
 
   <Section
@@ -62,10 +64,10 @@ const servicesWithIcons = services.map((s, i) => ({
     <GalleryBlock
       variant={home?.data.galleryVariant ?? 'portfolio'}
       items={[
-        { title: 'Formal Living', description: 'Rich hardwood flooring in a formal living room setting', imageUrl: '/uploads/showcase-01.jpg' },
-        { title: 'Open-Plan Living', description: 'Premium timber flooring across open-plan dining and living areas', imageUrl: '/uploads/showcase-02.jpg' },
-        { title: 'Minimalist Interior', description: 'Pale oak floorboards in a bright, contemporary home', imageUrl: '/uploads/showcase-03.jpg' },
-        { title: 'Modern Dining', description: 'Honey-toned timber flooring in an open-plan dining space', imageUrl: '/uploads/showcase-04.jpg' }
+        { title: 'Formal Living', description: 'Rich hardwood flooring in a formal living room setting', imageUrl: `${url}uploads/showcase-01.jpg` },
+        { title: 'Open-Plan Living', description: 'Premium timber flooring across open-plan dining and living areas', imageUrl: `${url}uploads/showcase-02.jpg` },
+        { title: 'Minimalist Interior', description: 'Pale oak floorboards in a bright, contemporary home', imageUrl: `${url}uploads/showcase-03.jpg` },
+        { title: 'Modern Dining', description: 'Honey-toned timber flooring in an open-plan dining space', imageUrl: `${url}uploads/showcase-04.jpg` }
       ]}
     />
   </Section>
@@ -78,7 +80,7 @@ const servicesWithIcons = services.map((s, i) => ({
       { label: '5-Star Rated' }
     ]}
     ctaLabel="Get a free quote"
-    ctaUrl="/contact/"
+    ctaUrl={`${url}contact/`}
   />
 
   <Section

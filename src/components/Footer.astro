@@ -16,6 +16,7 @@ interface Props {
 const { site, variant = 'default' } = Astro.props;
 const year = new Date().getFullYear();
 const isDark = variant === 'dark';
+const url = import.meta.env.BASE_URL;
 ---
 
 <footer class:list={['site-footer', isDark && 'site-footer--dark']}>
@@ -45,7 +46,7 @@ const isDark = variant === 'dark';
         </div>
       </div>
       <div class="footer-props__cta-wrap">
-      <a class="button button--outline-gold" href="/contact/">
+      <a class="button button--outline-gold" href={`${url}contact/`}>
         GET A FREE QUOTE
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
@@ -59,7 +60,7 @@ const isDark = variant === 'dark';
   <div class="footer-main container">
     <!-- col 1: brand -->
     <div class="footer-col footer-col--brand">
-      <a class="footer-logo" href="/" aria-label={`${site.name} home`}>
+      <a class="footer-logo" href={url} aria-label={`${site.name} home`}>
         <Image src={footerLogo} alt={site.name} class="footer-logo__img" />
       </a>
       <div class="footer-col--brand-text">
@@ -87,16 +88,16 @@ const isDark = variant === 'dark';
     <!-- col 2: services -->
     <div class="footer-col">
       <h2 class="footer-col__heading">SERVICES</h2>
-      <a href="/services/engineered-flooring/">Engineered Flooring</a>
-      <a href="/services/flooring-installations/">Flooring Installations</a>
-      <a href="/services/grinding-levelling/">Grinding &amp; Levelling</a>
+      <a href={`${url}services/engineered-flooring/`}>Engineered Flooring</a>
+      <a href={`${url}services/flooring-installations/`}>Flooring Installations</a>
+      <a href={`${url}services/grinding-levelling/`}>Grinding &amp; Levelling</a>
     </div>
 
     <!-- col 3: company -->
     <div class="footer-col">
       <h2 class="footer-col__heading">COMPANY</h2>
-      <a href="/about/">About Us</a>
-      <a href="/faq/">FAQ</a>
+      <a href={`${url}about/`}>About Us</a>
+      <a href={`${url}faq/`}>FAQ</a>
     </div>
 
     <!-- col 4: get in touch -->
