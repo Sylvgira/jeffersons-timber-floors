@@ -230,7 +230,7 @@ const showPanel = variant !== 'centered' && variant !== 'image-full';
     border-bottom: none;
     overflow: hidden;
     background:
-      linear-gradient(to bottom, #1a1008, #2d1f0e, #3d2a14);
+      radial-gradient(ellipse at 70% 30%, #3a281a 0%, #1a0e08 40%, #0d0603 100%);
   }
 
   .hero--image-full .hero__bg {
@@ -247,9 +247,23 @@ const showPanel = variant !== 'centered' && variant !== 'image-full';
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(135deg, rgba(40, 22, 8, 0.6) 0%, transparent 50%),
-      linear-gradient(225deg, rgba(80, 40, 15, 0.35) 0%, transparent 45%),
-      linear-gradient(to top, rgba(25, 12, 4, 0.55) 0%, transparent 30%);
+      repeating-linear-gradient(
+        90deg,
+        transparent 0px,
+        transparent 2px,
+        rgba(60, 35, 15, 0.08) 2px,
+        rgba(60, 35, 15, 0.08) 3px
+      ),
+      repeating-linear-gradient(
+        0deg,
+        transparent 0px,
+        transparent 6px,
+        rgba(40, 20, 8, 0.06) 6px,
+        rgba(40, 20, 8, 0.06) 7px
+      ),
+      linear-gradient(135deg, rgba(50, 28, 12, 0.5) 0%, transparent 55%),
+      linear-gradient(225deg, rgba(80, 35, 10, 0.3) 0%, transparent 40%),
+      linear-gradient(to top, rgba(15, 6, 2, 0.7) 0%, transparent 35%);
   }
 
   .hero--image-full .hero__overlay {
