@@ -77,13 +77,18 @@ const { faqs } = Astro.props;
   }
 
   .faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease;
   }
 
   details[open] .faq-answer {
-    max-height: 400px;
+    grid-template-rows: 1fr;
+  }
+
+  .faq-answer > * {
+    overflow: hidden;
+    min-height: 0;
   }
 
   .faq-answer p {
