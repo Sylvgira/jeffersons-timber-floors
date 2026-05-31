@@ -51,9 +51,9 @@ const showPanel = variant !== 'centered' && variant !== 'image-full';
         <hr class="hero__rule" aria-hidden="true" />
         <p>{intro}</p>
         <div class="button-row">
-          <a class="button button--outline-light" href={primaryUrl}>{primaryLabel}</a>
+          <a class="button button--primary-light" href={primaryUrl}>{primaryLabel}</a>
           {secondaryLabel && secondaryUrl && (
-            <a class="button button--outline-light" href={secondaryUrl}>{secondaryLabel}</a>
+            <a class="button button--secondary-light" href={secondaryUrl}>{secondaryLabel}</a>
           )}
         </div>
       </div>
@@ -67,7 +67,7 @@ const showPanel = variant !== 'centered' && variant !== 'image-full';
         <h1>{title}</h1>
         <p>{intro}</p>
         <div class="button-row">
-          <a class="button" href={primaryUrl}>{primaryLabel}</a>
+          <a class="button button--primary" href={primaryUrl}>{primaryLabel}</a>
           {secondaryLabel && secondaryUrl && (
             <a class="button button--secondary" href={secondaryUrl}>{secondaryLabel}</a>
           )}
