@@ -21,7 +21,7 @@ const { faqs } = Astro.props;
         <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
       </summary>
       <div class="faq-answer">
-        <p>{faq.data.answer}</p>
+        <div class="faq-answer__inner">{faq.data.answer}</div>
       </div>
     </details>
   ))}
@@ -91,8 +91,7 @@ const { faqs } = Astro.props;
     min-height: 0;
   }
 
-  .faq-answer p {
-    margin: 0;
+  .faq-answer__inner {
     padding-bottom: var(--space-5);
   }
 
