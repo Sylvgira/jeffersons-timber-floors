@@ -16,7 +16,10 @@ const { faqs } = Astro.props;
 <div class="faq-list">
   {faqs.map((faq) => (
     <details>
-      <summary>{faq.data.question}</summary>
+      <summary>
+        <span>{faq.data.question}</span>
+        <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </summary>
       <p>{faq.data.answer}</p>
     </details>
   ))}
@@ -33,9 +36,28 @@ const { faqs } = Astro.props;
   }
 
   summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-4);
     cursor: pointer;
     color: var(--color-heading);
     font-weight: 800;
+    list-style: none;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-chevron {
+    flex-shrink: 0;
+    color: var(--color-gold);
+    transition: transform 0.25s ease;
+  }
+
+  details[open] .faq-chevron {
+    transform: rotate(90deg);
   }
 
   details p {
